@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Kay! Stationery - Papelería con Alma de Perrito</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png"/>
+    
+    <!-- Tailwind CSS y Plugins -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- Fuentes y Material Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet"/>
+    
+    <!-- Configuración de Diseño (Colores y Tipografía) -->
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface": "#fff8f6",
+                      "surface-dim": "#e8d6d1",
+                      "surface-bright": "#fff8f6",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-low": "#fff1ec",
+                      "surface-container": "#fceae4",
+                      "surface-container-high": "#f6e5df",
+                      "surface-container-highest": "#f0dfd9",
+                      "on-surface": "#221a16",
+                      "on-surface-variant": "#58423c",
+                      "inverse-surface": "#382e2a",
+                      "inverse-on-surface": "#ffede7",
+                      "outline": "#8b716a",
+                      "outline-variant": "#dfc0b7",
+                      "surface-tint": "#a73918",
+                      "primary": "#a43716",
+                      "on-primary": "#ffffff",
+                      "primary-container": "#c54f2c",
+                      "on-primary-container": "#fffbff",
+                      "inverse-primary": "#ffb5a0",
+                      "secondary": "#79545f",
+                      "on-secondary": "#ffffff",
+                      "secondary-container": "#fecdda",
+                      "on-secondary-container": "#7a5560",
+                      "tertiary": "#5d5d4a",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-container": "#767662",
+                      "on-tertiary-container": "#fffbff",
+                      "error": "#ba1a1a",
+                      "on-error": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "on-error-container": "#93000a",
+                      "primary-fixed": "#ffdbd1",
+                      "primary-fixed-dim": "#ffb5a0",
+                      "on-primary-fixed": "#3b0900",
+                      "on-primary-fixed-variant": "#862201",
+                      "secondary-fixed": "#ffd9e2",
+                      "secondary-fixed-dim": "#e9bac7",
+                      "on-secondary-fixed": "#2e131c",
+                      "on-secondary-fixed-variant": "#5f3d48",
+                      "tertiary-fixed": "#e5e4cb",
+                      "tertiary-fixed-dim": "#c9c8b0",
+                      "on-tertiary-fixed": "#1c1c0e",
+                      "on-tertiary-fixed-variant": "#484836",
+                      "background": "#fff8f6",
+                      "on-background": "#221a16"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.5rem",
+                      "sm": "0.25rem",
+                      "md": "0.75rem",
+                      "lg": "1rem",
+                      "xl": "1.5rem",
+                      "full": "9999px",
+                      "card": "1.5rem"
+              },
+              "spacing": {
+                      "margin-mobile": "20px",
+                      "unit": "8px",
+                      "container-max": "1200px",
+                      "margin-desktop": "64px",
+                      "gutter": "24px",
+                      "section-padding": "120px"
+              },
+              "fontFamily": {
+                      "label-md": ["Be Vietnam Pro", "sans-serif"],
+                      "body-md": ["Be Vietnam Pro", "sans-serif"],
+                      "headline-lg-mobile": ["Plus Jakarta Sans", "sans-serif"],
+                      "headline-xl": ["Plus Jakarta Sans", "sans-serif"],
+                      "label-sm": ["Be Vietnam Pro", "sans-serif"],
+                      "body-lg": ["Be Vietnam Pro", "sans-serif"],
+                      "headline-lg": ["Plus Jakarta Sans", "sans-serif"]
+              },
+              "fontSize": {
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                      "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+              },
+              boxShadow: {
+                  'soft-coral': '0px 8px 30px rgba(217, 93, 57, 0.08)',
+              }
+            }
+          }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased overflow-x-hidden">
+
+    <!-- SVG Filters para eliminar fondo de la imagen del perrito -->
+    <svg style="position: absolute; width: 0; height: 0;" aria-hidden="true">
+        <defs>
+            <filter id="remove-light-bg">
+                <feColorMatrix in="SourceGraphic" type="luminanceToAlpha" result="lum" />
+                <feComponentTransfer in="lum" result="alphaMask">
+                    <!-- Ajuste de luminancia: hace transparente el fondo claro y opacas las líneas oscuras -->
+                    <feFuncA type="linear" slope="-3" intercept="2.6" />
+                </feComponentTransfer>
+                <feComposite in="SourceGraphic" in2="alphaMask" operator="in" />
+            </filter>
+        </defs>
+    </svg>
+
+    <!-- Top Navigation Bar -->
+    <nav class="w-full sticky top-0 z-40 bg-surface/90 backdrop-blur-md transition-all duration-300 border-b border-transparent" id="mainNav">
+        <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-4 flex justify-between items-center">
+            
+            <!-- Logo -->
+            <a class="flex items-center gap-2 font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold text-primary tracking-tight hover:opacity-80 transition-opacity" href="#">
+                <img src="D:\Documentos\Proyectos\Kay Stationery\logo.png" alt="Kay Logo" class="h-8 md:h-10 w-auto object-contain" style="filter: url(#remove-light-bg);">
+                Kay!
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a class="font-label-md text-label-md text-primary border-b-2 border-primary font-bold pb-1" href="#home">Inicio</a>
+                <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-300 pb-1" href="#about">Nosotros</a>
+                <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-300 pb-1" href="#products">Top Productos</a>
+                <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-300 pb-1" href="#contact">Contacto</a>
+            </div>
+            
+            <!-- Desktop CTA -->
+            <a href="catalogo.pdf" download="Catalogo_Kay_Stationery.pdf" class="hidden md:flex items-center justify-center bg-primary text-on-primary rounded-full px-6 py-2 font-label-md text-label-md transition-all duration-200 hover:bg-primary-container hover:text-on-primary-container active:scale-95 shadow-soft-coral">
+                Catálogo
+            </a>
+            
+            <!-- Mobile Menu Icons -->
+            <div class="md:hidden flex items-center space-x-3">
+                <button aria-label="Menu" id="mobileMenuBtn" class="text-on-surface p-2 hover:text-primary transition-colors">
+                    <span class="material-symbols-outlined text-[28px]">menu</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-surface-container-lowest border-t border-outline-variant/30 absolute w-full left-0 top-full shadow-lg">
+            <div class="flex flex-col px-margin-mobile py-4 space-y-4">
+                <a class="font-label-md text-primary font-bold" href="#home" onclick="toggleMobileMenu()">Inicio</a>
+                <a class="font-label-md text-on-surface-variant" href="#about" onclick="toggleMobileMenu()">Nosotros</a>
+                <a class="font-label-md text-on-surface-variant" href="#products" onclick="toggleMobileMenu()">Top Productos</a>
+                <a class="font-label-md text-on-surface-variant" href="#contact" onclick="toggleMobileMenu()">Contacto</a>
+                <a href="catalogo.pdf" download="Catalogo_Kay_Stationery.pdf" class="font-label-md text-primary flex items-center gap-2" onclick="toggleMobileMenu()">
+                    <span class="material-symbols-outlined text-[20px]">download</span> Descargar Catálogo
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative min-h-[85vh] flex items-center justify-center pt-10 md:pt-20 pb-24 px-margin-mobile md:px-margin-desktop bg-surface overflow-hidden" id="home">
+            <div class="absolute inset-0 z-0 opacity-[0.15] pointer-events-none" style="background-image: radial-gradient(#a43716 1px, transparent 1px); background-size: 32px 32px;"></div>
+            
+            <div class="max-w-container-max mx-auto flex flex-col-reverse md:grid md:grid-cols-2 gap-10 md:gap-16 items-center relative z-10 w-full">
+                
+                <div class="flex flex-col items-start w-full mt-6 md:mt-0">
+                    <span class="inline-block text-primary font-label-md text-label-md mb-3 md:mb-4 uppercase tracking-[0.2em]">
+                        Estilo Kawaii
+                    </span>
+                    <h1 class="font-headline-xl text-headline-lg-mobile md:text-headline-xl text-primary mb-4 md:mb-6 leading-[1.1] font-extrabold">
+                        Papelería con <br class="hidden md:block" /> Alma de Perrito
+                    </h1>
+                    <p class="font-body-lg text-body-md md:text-body-lg text-on-surface-variant mb-8 md:mb-10 max-w-md">
+                        Creatividad organizada para los amantes de lo adorable y profesional. Diseños que inspiran tu día a día.
+                    </p>
+                    <a href="#products" class="w-full md:w-auto flex items-center justify-center gap-3 bg-primary text-on-primary px-8 py-4 rounded-full font-label-md text-label-md hover:shadow-soft-coral hover:-translate-y-1 transition-all duration-300">
+                        <span class="material-symbols-outlined">pets</span>
+                        Descubre la Colección
+                    </a>
+                </div>
+                
+                <!-- Hero Image -->
+                <div class="relative w-full h-[320px] md:h-[550px] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-soft-coral group w-full">
+                    <div class="absolute inset-0 bg-primary/5 z-10 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+                    <img alt="Escritorio limpio con papelería" 
+                         src="assets/banner-inicio.png" 
+                         class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out"/>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- Value Props -->
+        <section class="py-20 bg-surface px-margin-mobile md:px-margin-desktop border-y border-outline-variant/30">
+            <div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="flex flex-col items-center text-center p-8 rounded-card hover:bg-surface-container-low transition-colors duration-300">
+                    <div class="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container mb-6 shadow-sm">
+                        <span class="material-symbols-outlined text-3xl">brush</span>
+                    </div>
+                    <h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-3">Diseño Exclusivo</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Cada pieza está diseñada con amor, fusionando la funcionalidad minimalista con la ternura del estilo kawaii.</p>
+                </div>
+                <div class="flex flex-col items-center text-center p-8 rounded-card hover:bg-surface-container-low transition-colors duration-300">
+                    <div class="w-16 h-16 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container mb-6 shadow-sm">
+                        <span class="material-symbols-outlined text-3xl">diamond</span>
+                    </div>
+                    <h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-3">Calidad Premium</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Materiales cuidadosamente seleccionados para ofrecer una experiencia táctil y visual excepcional en cada uso.</p>
+                </div>
+                <div class="flex flex-col items-center text-center p-8 rounded-card hover:bg-surface-container-low transition-colors duration-300">
+                    <div class="w-16 h-16 rounded-full bg-tertiary-container flex items-center justify-center text-on-tertiary-container mb-6 shadow-sm">
+                        <span class="material-symbols-outlined text-3xl">flare</span>
+                    </div>
+                    <h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-3">Inspiración Diaria</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Herramientas organizativas diseñadas para alegrar tu escritorio y motivarte a alcanzar tus metas diarias.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us / Historia Section -->
+        <section class="py-20 md:py-28 px-margin-mobile md:px-margin-desktop bg-surface-container-low relative" id="about">
+            <div class="max-w-container-max mx-auto flex flex-col items-center text-center">
+                <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container mb-8 shadow-sm overflow-hidden p-3 md:p-4">
+                    <img src="assets/purple-icon.png" alt="Perrito Mascota" class="w-full h-full object-contain" style="filter: url(#remove-light-bg);">
+                </div>
+                <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-6 font-bold">Nuestra Historia</h2>
+                <p class="font-body-md md:text-body-lg text-on-surface-variant max-w-2xl mb-12 leading-relaxed">
+                    Nacimos de la idea de que la organización no tiene por qué ser fría. En Kay!, transformamos la calidez de la cultura Kawaii en herramientas profesionales de alta calidad. Cada diseño es una caricia para tu creatividad.
+                </p>
+                
+                <div class="flex items-center justify-center gap-12 md:gap-20">
+                    <div class="flex flex-col items-center">
+                        <span class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary font-bold">100%</span>
+                        <span class="font-label-sm text-on-surface-variant tracking-[0.15em] mt-1">ORIGINAL</span>
+                    </div>
+                    <div class="w-px h-12 bg-outline-variant/50"></div>
+                    <div class="flex flex-col items-center">
+                        <span class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary font-bold">Eco</span>
+                        <span class="font-label-sm text-on-surface-variant tracking-[0.15em] mt-1">PAPEL</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Top Products -->
+        <section class="py-20 md:py-32 px-margin-mobile md:px-margin-desktop bg-surface" id="products">
+            <div class="max-w-container-max mx-auto">
+                <div class="flex flex-col md:flex-row md:justify-between md:items-end mb-10 md:mb-16">
+                    <div>
+                        <span class="font-label-md text-label-md text-secondary uppercase tracking-[0.15em] mb-2 block">Lo Más Nuevo</span>
+                        <h2 class="font-headline-xl text-headline-lg-mobile md:text-headline-xl text-on-surface font-bold">Nuestra Selección</h2>
+                    </div>
+                    <a href="catalogo.pdf" download="Catalogo_Kay_Stationery.pdf" class="hidden md:inline-flex items-center text-primary font-label-md hover:underline underline-offset-4 mt-4 md:mt-0 transition-all">
+                        Ver todo <span class="material-symbols-outlined ml-1 text-sm">arrow_forward</span>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
+                    
+                    <!-- Product Card 1 -->
+                    <div class="group flex flex-col bg-surface-container-lowest rounded-[2rem] p-4 md:p-6 shadow-soft-coral border border-outline-variant/20 hover:border-outline-variant/60 transition-colors">
+                        <div class="relative aspect-[4/3] rounded-[1.5rem] overflow-hidden mb-6 bg-surface-container">
+                            <div class="absolute inset-0 bg-secondary-container/5 group-hover:bg-transparent transition-colors duration-300 z-10"></div>
+                            <img alt="Poodle Planner 2024" 
+                                 src="assets/libreta-poodle.png" 
+                                 class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"/>
+                            <div class="absolute top-4 left-4 z-20 bg-secondary-fixed text-on-secondary-fixed px-4 py-1.5 rounded-full shadow-sm">
+                                <span class="font-label-sm text-label-sm">Bestseller</span>
+                            </div>
+                        </div>
+                        <div class="flex-grow flex flex-col">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="font-headline-lg-mobile text-[22px] md:text-[24px] text-on-surface leading-tight">Poodle Planner<br>2024</h3>
+                            </div>
+                            <p class="font-body-md text-on-surface-variant mb-6 text-[15px] flex-grow">
+                                Organiza tus días con la alegría de nuestro icónico caniche. Papel premium que no traspasa.
+                            </p>
+                            <a href="catalogo.pdf" download="Catalogo_Kay_Stationery.pdf" class="w-full flex items-center justify-center gap-2 bg-surface-container text-primary py-3.5 rounded-full font-label-md hover:bg-secondary-container hover:text-on-secondary-container transition-colors">
+                                Ver más productos
+                                <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 2 -->
+                    <div class="group flex flex-col bg-surface-container-lowest rounded-[2rem] p-4 md:p-6 shadow-soft-coral border border-outline-variant/20 hover:border-outline-variant/60 transition-colors">
+                        <div class="relative aspect-[4/3] rounded-[1.5rem] overflow-hidden mb-6 bg-surface-container">
+                            <div class="absolute inset-0 bg-primary-container/5 group-hover:bg-transparent transition-colors duration-300 z-10"></div>
+                            <img alt="Sticker Set: Joyful Treats" 
+                                 src="assets/stickers.png" 
+                                 class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"/>
+                        </div>
+                        <div class="flex-grow flex flex-col">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="font-headline-lg-mobile text-[22px] md:text-[24px] text-on-surface leading-tight">Sticker Set: Joyful<br>Treats</h3>
+                            </div>
+                            <p class="font-body-md text-on-surface-variant mb-6 text-[15px] flex-grow">
+                                Pegatinas resistentes al agua con diseños exclusivos y tiernos. Ideales para decorar tus apuntes.
+                            </p>
+                            <a href="catalogo.pdf" download="Catalogo_Kay_Stationery.pdf" class="w-full flex items-center justify-center gap-2 bg-surface-container text-primary py-3.5 rounded-full font-label-md hover:bg-secondary-container hover:text-on-secondary-container transition-colors">
+                                Ver más productos
+                                <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 text-center md:hidden">
+                    <a href="catalogo.pdf" download="Catalogo_Kay_Stationery.pdf" class="inline-flex items-center text-primary font-label-md hover:underline underline-offset-4 transition-all">
+                        Ver todo el catálogo <span class="material-symbols-outlined ml-1 text-sm">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="py-20 md:py-28 px-margin-mobile md:px-margin-desktop bg-surface relative" id="contact">
+            <div class="max-w-container-max mx-auto max-w-3xl">
+                <div class="text-center mb-10 md:mb-16">
+                    <span class="font-label-md text-label-md text-secondary uppercase tracking-[0.15em] mb-2 block">¿Dudas?</span>
+                    <h2 class="font-headline-xl text-headline-lg-mobile md:text-headline-xl text-on-surface font-bold">Contáctanos</h2>
+                    <p class="font-body-md text-on-surface-variant mt-4">Escríbenos y te responderemos lo más pronto posible con un ladrido de felicidad.</p>
+                </div>
+                
+                <form action="https://formsubmit.co/mfsantiago.rmz@gmail.com" method="POST" class="bg-surface-container-lowest p-8 md:p-10 rounded-[2rem] shadow-soft-coral border border-outline-variant/20 flex flex-col gap-6">
+                    <input type="hidden" name="_subject" value="Nuevo mensaje desde Kay! Stationery">
+                    <input type="hidden" name="_template" value="table">
+                    <!-- Configura a donde regresa despues de enviar. Reemplaza con tu URL real cuando la tengas -->
+                    <input type="hidden" name="_next" value="https://tu-usuario.github.io/tu-repo/#contact"> 
+                    
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="w-full">
+                            <label for="name" class="block font-label-md text-on-surface mb-2">Nombre</label>
+                            <input type="text" id="name" name="Nombre" required class="w-full bg-surface px-4 py-3 rounded-xl border border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md text-on-surface placeholder:text-on-surface-variant/50" placeholder="Tu nombre">
+                        </div>
+                        <div class="w-full">
+                            <label for="email" class="block font-label-md text-on-surface mb-2">Correo Electrónico</label>
+                            <input type="email" id="email" name="Correo" required class="w-full bg-surface px-4 py-3 rounded-xl border border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md text-on-surface placeholder:text-on-surface-variant/50" placeholder="tu@correo.com">
+                        </div>
+                    </div>
+                    
+                    <div class="w-full">
+                        <label for="subject" class="block font-label-md text-on-surface mb-2">Asunto</label>
+                        <input type="text" id="subject" name="Asunto" required class="w-full bg-surface px-4 py-3 rounded-xl border border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md text-on-surface placeholder:text-on-surface-variant/50" placeholder="¿En qué te podemos ayudar?">
+                    </div>
+                    
+                    <div class="w-full">
+                        <label for="message" class="block font-label-md text-on-surface mb-2">Descripción</label>
+                        <textarea id="message" name="Mensaje" rows="4" required class="w-full bg-surface px-4 py-3 rounded-xl border border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md text-on-surface resize-none placeholder:text-on-surface-variant/50" placeholder="Escribe tu mensaje aquí..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="w-full flex items-center justify-center gap-2 bg-primary text-on-primary py-4 rounded-full font-label-md hover:bg-primary-container hover:text-on-primary-container transition-colors shadow-soft-coral mt-2">
+                        <span class="material-symbols-outlined text-[20px]">send</span>
+                        Enviar Mensaje
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface-container-low w-full pt-16 pb-8 px-margin-mobile md:px-margin-desktop border-t border-outline-variant/30">
+        <div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-6 items-start">
+            
+            <div class="md:col-span-4 flex flex-col space-y-4">
+                <a class="font-headline-lg text-headline-xl font-bold text-primary" href="#">Kay!</a>
+                <p class="font-body-md text-on-surface-variant max-w-[280px]">Organized joy for the modern creative professional.</p>
+                <div class="flex space-x-5 mt-6 pt-2">
+                    <a aria-label="Instagram" class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-[28px]">alternate_email</span></a>
+                    <a aria-label="Camera" class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-[28px]">photo_camera</span></a>
+                    <a aria-label="Video" class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-[28px]">smart_display</span></a>
+                </div>
+            </div>
+            
+            <div class="md:col-span-4 md:pl-10 flex flex-col space-y-4">
+                <h4 class="font-label-md text-label-md text-on-surface uppercase tracking-[0.1em] mb-1">Explorar</h4>
+                <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="catalogo.pdf" download="Catalogo_Kay_Stationery.pdf">Catálogo</a>
+                <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#products">Novedades</a>
+                <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Prensa</a>
+            </div>
+            
+            <div class="md:col-span-4 flex flex-col space-y-4">
+                <h4 class="font-label-md text-label-md text-on-surface uppercase tracking-[0.1em] mb-1">Soporte</h4>
+                <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Envíos</a>
+                <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#contact">Contacto</a>
+                <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacidad</a>
+            </div>
+            
+        </div>
+        
+        <div class="max-w-container-max mx-auto mt-16 pt-8 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="font-body-md text-[13px] text-on-surface-variant text-center md:text-left italic">© 2024 Kay! Stationery. Crafted with organized joy.</p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp / Mascot Button -->
+    <a href="https://wa.me/525564469029" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp" class="w-14 h-14 rounded-full bg-primary text-on-primary flex items-center justify-center hover:bg-primary-container transition-all shadow-soft-coral hover:-translate-y-1 fixed bottom-6 right-6 md:right-10 md:bottom-10 z-50 p-3">
+        <span class="material-symbols-outlined">pets</span>
+    </a>
+
+    <script>
+        // Navigation Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('mainNav');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-sm');
+                nav.classList.add('border-outline-variant/20');
+                nav.classList.replace('border-transparent', 'border-outline-variant/20');
+            } else {
+                nav.classList.remove('shadow-sm');
+                nav.classList.replace('border-outline-variant/20', 'border-transparent');
+            }
+        });
+
+        // Mobile Menu Toggle logic
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileMenuBtn.querySelector('.material-symbols-outlined');
+            if(mobileMenu.classList.contains('hidden')){
+                icon.textContent = 'menu';
+            } else {
+                icon.textContent = 'close';
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    </script>
+</body>
+</html>
